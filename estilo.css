@@ -1,0 +1,122 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  text-align: center;
+  padding: 5vw;
+}
+
+h1 {
+  font-size: 8vw;
+  margin-bottom: 1vh;
+}
+
+p {
+  font-size: 4.5vw;
+  margin-bottom: 1vh;
+}
+
+input[type="number"] {
+  padding: 2vh 3vw;
+  font-size: 4vw;
+  border-radius: 8px;
+  border: none;
+  width: 60%;
+  max-width: 200px;
+  margin-bottom: 2vh;
+}
+
+button {
+  background-color: #ffffff;
+  color: #0072ff;
+  border: none;
+  padding: 2vh 5vw;
+  font-size: 4vw;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 2vh 1vw;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+#control {
+  margin-top: 3vh;
+}
+
+#resultado {
+  margin-top: 3vh;
+  font-size: 5vw;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2vh 2vw;
+  border-radius: 10px;
+  display: inline-block;
+  min-width: 50vw;
+}
+
+#historial {
+  margin: 5vh auto 0 auto;
+  font-size: 3.5vw;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4vw;
+  border-radius: 10px;
+  max-width: 90%;
+}
+
+#historial h2 {
+  margin-bottom: 2vh;
+  font-size: 5vw;
+}
+
+#numerosGenerados span {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  margin: 1vw;
+  padding: 1vh 2vw;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 3.5vw;
+}
+
+/* MEDIA QUERIES PARA DISPOSITIVOS MÁS GRANDES */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  input[type="number"] {
+    font-size: 18px;
+  }
+
+  button {
+    font-size: 18px;
+  }
+
+  #resultado {
+    font-size: 28px;
+    min-width: 200px;
+  }
+
+  #historial {
+    font-size: 18px;
+    max-width: 600px;
+  }
+
+  #historial h2 {
+    font-size: 24px;
+  }
+
+  #numerosGenerados span {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Randomizador sin Repetición</title>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+  <h1>Randomizador Único</h1>
+  <p>Ingresa hasta qué número quieres generar:</p>
+
+  <input type="number" id="limite" min="1" placeholder="Ej: 100" />
+  <button onclick="iniciar()">Iniciar</button>
+
+  <div id="control">
+    <button onclick="generarNumero()" disabled id="botonGenerar">Generar número</button>
+    <div id="resultado">Esperando...</div>
+  </div>
+
+  <div id="historial">
+    <h2>Números ya generados:</h2>
+    <div id="numerosGenerados"></div>
+  </div>
+
+  <script>
+    let numeros = [];
+
+    function iniciar() {
+      const limite = parseInt(document.getElementById("limite").value);
+      if (isNaN(limite) || limite <= 0) {
+        alert("Por favor ingresa un número válido mayor a 0.");
+        return;
+      }
+
+      numeros = Array.from({ length: limite }, (_, i) => i + 1);
+
+      // Reset
+      document.getElementById("resultado").innerText = "Esperando...";
+      document.getElementById("numerosGenerados").innerHTML = "";
+      document.getElementById("botonGenerar").disabled = false;
+    }
+
+    function generarNumero() {
+      if (numeros.length === 0) {
+        document.getElementById("resultado").innerText = "¡Todos los números ya han salido!";
+        return;
+      }
+
+      const indice = Math.floor(Math.random() * numeros.length);
+      const numero = numeros[indice];
+      numeros.splice(indice, 1);
+
+      document.getElementById("resultado").innerText = `Número generado: ${numero}`;
+
+      const span = document.createElement("span");
+      span.textContent = numero;
+      document.getElementById("numerosGenerados").appendChild(span);
+    }
+  </script>
+</body>
+</html>
