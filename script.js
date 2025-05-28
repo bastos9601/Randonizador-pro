@@ -19,7 +19,10 @@ function iniciar() {
     return;
   }
 
+  // Crear array de números y mezclarlos aleatoriamente
   numeros = Array.from({ length: limite }, (_, i) => i + 1);
+  numeros.sort(() => Math.random() - 0.5);
+
   historial = [];
   listaHistorial.innerHTML = "";
   botonGirar.disabled = false;
