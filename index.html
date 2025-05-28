@@ -2,60 +2,33 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Randomizador sin Repetición</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ruleta Profesional</title>
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
-  <h1>Randomizador Único</h1>
-  <p>Ingresa hasta qué número quieres generar:</p>
+  <h1>🎯 Ruleta Aleatoria</h1>
 
-  <input type="number" id="limite" min="1" placeholder="Ej: 100" />
-  <button onclick="iniciar()">Iniciar</button>
-
-  <div id="control">
-    <button onclick="generarNumero()" disabled id="botonGenerar">Generar número</button>
-    <div id="resultado">Esperando...</div>
+  <div class="controls">
+    <label for="limite">Número máximo (1 a 50):</label>
+    <input type="number" id="limite" min="1" max="50" placeholder="Ej: 8" />
+    <button onclick="iniciar()">Crear Ruleta</button>
   </div>
 
-  <div id="historial">
-    <h2>Números ya generados:</h2>
-    <div id="numerosGenerados"></div>
+  <div class="ruleta-container">
+    <div class="puntero"></div>
+    <div id="ruleta" class="ruleta"></div>
   </div>
 
-  <script>
-    let numeros = [];
+  <button id="botonGirar" onclick="girarRuleta()" disabled>Girar</button>
+  <div id="resultado" class="resultado">Esperando número...</div>
+  <div id="historial" class="resultado">
+  <h2>🎲 Números que ya salieron:</h2>
+  <ul id="listaHistorial"></ul>
+  </div>
 
-    function iniciar() {
-      const limite = parseInt(document.getElementById("limite").value);
-      if (isNaN(limite) || limite <= 0) {
-        alert("Por favor ingresa un número válido mayor a 0.");
-        return;
-      }
 
-      numeros = Array.from({ length: limite }, (_, i) => i + 1);
+  <script src="script.js"></script>
 
-      // Reset
-      document.getElementById("resultado").innerText = "Esperando...";
-      document.getElementById("numerosGenerados").innerHTML = "";
-      document.getElementById("botonGenerar").disabled = false;
-    }
-
-    function generarNumero() {
-      if (numeros.length === 0) {
-        document.getElementById("resultado").innerText = "¡Todos los números ya han salido!";
-        return;
-      }
-
-      const indice = Math.floor(Math.random() * numeros.length);
-      const numero = numeros[indice];
-      numeros.splice(indice, 1);
-
-      document.getElementById("resultado").innerText = `Número generado: ${numero}`;
-
-      const span = document.createElement("span");
-      span.textContent = numero;
-      document.getElementById("numerosGenerados").appendChild(span);
-    }
-  </script>
 </body>
 </html>
